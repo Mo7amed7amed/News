@@ -10,6 +10,7 @@ import java.util.List;
  */
 
 public class NewsLoader extends AsyncTaskLoader<List<News>> {
+    private static final String LOG_TAG = NewsLoader.class.getName();
     private String mUrl;
 
     public NewsLoader(Context context, String url) {
@@ -22,13 +23,14 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
         forceLoad();
     }
 
+
     @Override
     public List<News> loadInBackground() {
-        if (mUrl.length() < 1 || mUrl == null) {
+        if (mUrl == null) {
             return null;
         }
-        List<News> news = QueryUtils.fetchNewsData(mUrl);
-        return news;
+        // Perform the network request, parse the response, and extract a list of earthquakes.
+        List<News> mm = QueryUtils.fetchNewsData(mUrl);
+        return mm;
     }
-
 }

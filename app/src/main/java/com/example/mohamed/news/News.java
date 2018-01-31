@@ -6,14 +6,14 @@ package com.example.mohamed.news;
 
 public class News {
     private String mTitle;
-    private String mType;
     private String mDate;
     private String mSection;
     private String mUrl;
+    private String mAuthor;
 
-    public News(String title, String type, String date, String section, String url) {
+    public News(String title, String author, String date, String section, String url) {
         this.mTitle = title;
-        this.mType = type;
+        this.mAuthor = author;
         this.mDate = date;
         this.mSection = section;
         this.mUrl = url;
@@ -23,9 +23,7 @@ public class News {
         return mTitle;
     }
 
-    public String getType() {
-        return mType;
-    }
+    public String getAuthor() {return mAuthor;}
 
     public String getDate() {
         return mDate;

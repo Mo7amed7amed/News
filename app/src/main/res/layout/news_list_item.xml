@@ -2,71 +2,76 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
+
+    android:background="@color/background"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/news_section"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/news_section"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorNewsSection"/>
-
-    <TextView
-        android:id="@+id/news_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/news_title"
-        android:textColor="@color/colorNewsTitle"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:layout_gravity="center"
+        android:textAllCaps="true"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/type"
+            style="@style/item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="8dp"
-            android:text="@string/type"
-            android:textColor="@color/colorNewsType"
-            android:textStyle="bold" />
-
+            android:text="@string/belong_to" />
 
         <TextView
-            android:id="@+id/news_type"
+            android:id="@+id/section_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/news_type"
-            android:textColor="@color/colorNewsType" />
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:paddingBottom="10dp">
 
         <TextView
-            android:id="@+id/date"
+            style="@style/item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="8dp"
-            android:text="@string/date"
-            android:textColor="@color/colorNewsDate"
-            android:textStyle="bold" />
+            android:text="@string/date_of_publication" />
 
         <TextView
-            android:id="@+id/news_date"
+            android:id="@+id/date_pub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/news_date"
-            android:textColor="@color/colorNewsDate" />
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:textSize="20sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <TextView
+            style="@style/item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type : " />
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </LinearLayout>

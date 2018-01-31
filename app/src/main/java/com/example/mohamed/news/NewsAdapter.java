@@ -1,86 +1,48 @@
 package com.example.mohamed.news;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import java.util.ArrayList;
 
 /**
  * Created by Mohamed on 1/27/2018.
  */
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
-    private List<News> mNewsList;
-    private OnItemClickListener mListener;
-    private Context mContext;
-
-    public NewsAdapter(List<News> newsList, OnItemClickListener listener){
-        mNewsList = newsList;
-        mListener = listener;
+public class NewsAdapter extends ArrayAdapter {
+    public NewsAdapter(Activity context, ArrayList<News> androidFlavors) {
+        // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
+        // the second argument is used when the ArrayAdapter is populating a single TextView.
+        // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
+        // going to use this second argument, so it can be any value. Here, we used 0.
+        super(context, 0, androidFlavors);
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(News news);
-    }
-
+    @NonNull
     @Override
-    public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        View newsView = LayoutInflater.from(context).inflate(R.layout.news_list_item, parent, false);
-        NewsViewHolder newsViewHolder = new NewsViewHolder(newsView);
-        return newsViewHolder;
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-    @Override
-    public void onBindViewHolder(NewsAdapter.NewsViewHolder holder, int position) {
-        News news = mNewsList.get(position);
-        holder.mTitle.setText(news.getTitle());
-        holder.mType.setText(news.getType());
-        holder.mDate.setText(news.getDate());
-        holder.mSection.setText(news.getSection());
-        holder.bind(mNewsList.get(position), mListener);
-    }
+        View listItemView = convertView;
+        if (listItemView == null) {
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.news_list_item, parent, false);
 
-    @Override
-    public int getItemCount() {
-        return mNewsList.size();
-    }
-
-    public static class NewsViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.news_title)
-        TextView mTitle;
-        @BindView(R.id.news_type) TextView mType;
-        @BindView(R.id.news_date) TextView mDate;
-        @BindView(R.id.news_section) TextView mSection;
-
-        public NewsViewHolder(View v) {
-            super(v);
-            ButterKnife.bind(this, v);
         }
-
-        public void bind(final News news, final OnItemClickListener listener) {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    listener.onItemClick(news);
-                }
-            });
-        }
+        News currentNews = (News) getItem(position);
+        TextView title = (TextView) listItemView.findViewById(R.id.title);
+        title.setText(currentNews.getTitle());
+        TextView section = (TextView) listItemView.findViewById(R.id.section_name);
+        section.setText(currentNews.getSection());
+        TextView date = (TextView) listItemView.findViewById(R.id.date_pub);
+        date.setText(currentNews.getDate());
+        TextView author = (TextView) listItemView.findViewById(R.id.author);
+        author.setText(currentNews.getAuthor());
+        return listItemView;
     }
 
-    public void clear(){
-        mNewsList.clear();
-        notifyDataSetChanged();
-    }
-
-    public void addAll(List<News> newsList){
-        mNewsList.addAll(newsList);
-        notifyDataSetChanged();
-    }
 }
