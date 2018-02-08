@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="background">#c2bfcf</color>
+    <color name="colorNewsSection">#1e80e9</color>
+    <color name="colorNewsTitle">#424242</color>
+    <color name="colorNewsType">#9f3887</color>
+    <color name="colorNewsDate">#f94ea1</color>
 </resources>
