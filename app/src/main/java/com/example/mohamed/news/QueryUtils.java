@@ -48,8 +48,16 @@ public final class QueryUtils {
                 String date = news.getString("webPublicationDate");
                 String section = news.getString("sectionName");
                 String url = news.getString("webUrl");
-                String author=news.getString("sectionName");
-                News n = new News(title, type, date, section, url,author);
+                String author = "N/A";
+                JSONObject fields = news.getJSONObject("fields");
+                author = fields.optString("byline");
+                    String authorName;
+                    if (TextUtils.isEmpty(author)) {
+                        authorName = "";
+                    } else {
+                        authorName = author ;
+                    }
+                News n = new News(title, type, date, section, url, authorName);
                 newses.add(n);
             }
         } catch (JSONException e) {

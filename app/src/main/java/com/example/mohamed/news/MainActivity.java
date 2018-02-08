@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         Uri baseUri = Uri.parse(NEWS_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
         uriBuilder.appendQueryParameter("api-key", "31348b4c-ec34-4a51-98d4-dfc8471f2a6c");
+        uriBuilder.appendQueryParameter("show-fields","byline");
         if (mSearchQuery != null)
             uriBuilder.appendQueryParameter("q", mSearchQuery);
         return new NewsLoader(this, uriBuilder.toString());
